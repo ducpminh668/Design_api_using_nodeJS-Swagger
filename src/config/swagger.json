@@ -1,0 +1,71 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "MUSIC API document made by Ducky",
+    "version": "1.0.0",
+    "title": "Music API documentation",
+    "contact": {
+      "email": "ducpminh668@gmail.com"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Songs",
+      "description": "API for Songs Endpoints"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/songs": {
+      "post": {
+        "tags": ["Songs"],
+        "summary": "API Endpoint for create Song",
+        "description": "Create new Song in database",
+        "parameters": [
+          {
+            "name": "song",
+            "description": "Song params to create new song",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/Song"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New Song Created",
+            "schema": {
+              "$ref": "#definitions/Song"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Song": {
+      "required": ["title", "url"],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "integer",
+          "format": "Int32"
+        }
+      }
+    }
+  }
+}
