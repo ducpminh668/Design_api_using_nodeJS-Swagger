@@ -4,6 +4,8 @@ import swaggerUi from 'swagger-ui-express';
 import { connect } from './config/db';
 import { restRouter } from './api';
 import swaggerDocument from './config/swagger.json';
+import passport from 'passport';
+import { configJWTStrategy } from './api/middlewares/passport-jwt';
 
 const app = express();
 const PORT = 3000;
@@ -12,6 +14,8 @@ connect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger('dev'));
+app.use(passport.initialize()); // req.user
+configJWTStrategy();
 
 app.use('/api', restRouter);
 app.use(
