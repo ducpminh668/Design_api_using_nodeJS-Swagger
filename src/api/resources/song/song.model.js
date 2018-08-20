@@ -16,6 +16,11 @@ const songSchema = new Schema({
     default: 0,
     min: 0,
     max: 5
+  },
+  artist: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 });
 songSchema.plugin(mongoosePaginate);
