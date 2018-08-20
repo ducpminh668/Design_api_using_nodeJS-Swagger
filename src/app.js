@@ -16,13 +16,15 @@ const PORT = config.port;
 connect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(logger('dev'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(logger('dev'));
+}
 app.use(passport.initialize()); // req.user
 configJWTStrategy();
 
 app.use('/api', restRouter);
 app.use(
-  '/api-docs',
+  '/',
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocument, {
     explorer: true

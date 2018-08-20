@@ -8,7 +8,7 @@
       "email": "ducpminh668@gmail.com"
     }
   },
-  "host": "localhost:3000",
+  "host": "https://desolate-earth-89672.herokuapp.com/",
   "basePath": "/api",
   "tags": [
     {
@@ -24,7 +24,7 @@
       "description": "API for playlist Endpoints"
     }
   ],
-  "schemes": ["http"],
+  "schemes": ["http", "https"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
