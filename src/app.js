@@ -6,9 +6,12 @@ import { restRouter } from './api';
 import swaggerDocument from './config/swagger.json';
 import passport from 'passport';
 import { configJWTStrategy } from './api/middlewares/passport-jwt';
+import { getConfig } from './config/config';
+
+const config = getConfig(process.env.NODE_ENV);
 
 const app = express();
-const PORT = 3000;
+const PORT = config.port;
 
 connect();
 app.use(express.json());
